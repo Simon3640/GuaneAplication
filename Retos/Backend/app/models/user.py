@@ -1,9 +1,8 @@
 from sqlalchemy import Integer, Column, String
-from sqlalchemy.orm import declarative_base, relationship
-from config.db import Base, meta_data
+from sqlalchemy.orm import relationship
+from config.db import Base
 
-meta_data.reflect()
-
+#Esta clase permite generar la tabla en la base de datos
 class modelUser(Base):
     __tablename__ = 'users'
     id = Column(Integer, primary_key=True, autoincrement=True)

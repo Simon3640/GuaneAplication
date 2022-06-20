@@ -15,9 +15,9 @@ app = FastAPI()
 
 load_dotenv()
 
-app.add_middleware(CORSMiddleware, allow_origins=["*"], allow_methods=["*"], allow_headers=["*"], expose_headers=["*"])
+app.add_middleware(CORSMiddleware, allow_origins=["*"], allow_methods=["*"], allow_headers=["*"], expose_headers=["*"]) #PERMITIMOS QUE LA API SEA ACCESIBLE DESDE TODOS LOS DOMINIOS
 
-Base.metadata.create_all(bind=engine)
+Base.metadata.create_all(bind=engine) #Permite crear las tablas de la base de datos
 
 
 app.include_router(authorize.Route, prefix="/api")
