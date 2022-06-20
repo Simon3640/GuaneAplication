@@ -2,11 +2,7 @@ from datetime import datetime
 from typing import Optional
 from pydantic import BaseModel, Field
 
-<<<<<<< HEAD
 #Se define el modelo perro
-=======
-
->>>>>>> d95075ea65709eb096846bf4f0c382d9e5df37a7
 class Dog(BaseModel):
     name : str = Field(
         ...,

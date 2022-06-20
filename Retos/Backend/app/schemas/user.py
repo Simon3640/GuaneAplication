@@ -1,14 +1,8 @@
-<<<<<<< HEAD
 from pydantic import BaseModel, Field
 
 
 
 #Se define el modelo usuario
-=======
-from typing import Optional
-from pydantic import BaseModel, Field
-
->>>>>>> d95075ea65709eb096846bf4f0c382d9e5df37a7
 class User(BaseModel):
     name : str = Field(
         ...,
@@ -32,11 +26,7 @@ class User(BaseModel):
         example="user@mail.com"
     )
     
-<<<<<<< HEAD
 # Esta clase hereda de User y nos ayuda a actualizar el usuario
-=======
-
->>>>>>> d95075ea65709eb096846bf4f0c382d9e5df37a7
 class responseUser(User):
     id : int = Field(
         ...,
