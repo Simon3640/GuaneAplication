@@ -1,4 +1,8 @@
 venv/
 GTTB_v1.1.0.pdf
+<<<<<<< HEAD
 __pycache__/
 log/
+=======
+__pycache__/
+>>>>>>> d95075ea65709eb096846bf4f0c382d9e5df37a7

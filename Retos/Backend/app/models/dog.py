@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 from sqlalchemy import ForeignKey, Integer, Column, String, DateTime
 from sqlalchemy.types import Boolean
 from sqlalchemy.sql import func
@@ -5,6 +6,17 @@ from config.db import Base
 
 
 #Esta clase nos permite generar la tabla en la base de datos
+=======
+from email.policy import default
+from sqlalchemy import ForeignKey, Integer, Column, String, DateTime
+from sqlalchemy.types import Boolean
+from sqlalchemy.sql import func
+from config.db import Base, meta_data
+
+meta_data.reflect()
+
+
+>>>>>>> d95075ea65709eb096846bf4f0c382d9e5df37a7
 class modelDog(Base):
     __tablename__ = 'dogs'
     id = Column(Integer, primary_key=True, autoincrement=True)

@@ -1,9 +1,12 @@
 from config.db import engine
 from httpx import AsyncClient
 
+<<<<<<< HEAD
 #Este documento nos permite consultar, insertar, actualizar y eliminar elementos de la base de datos
 
 #Esta función nos permite consultar todos los elementos de alguna tabla de la base de datos
+=======
+>>>>>>> d95075ea65709eb096846bf4f0c382d9e5df37a7
 async def get_all(table):
     """get_all function
     This function get all data from a table
@@ -17,6 +20,7 @@ async def get_all(table):
     with engine.connect() as conn:
         return conn.execute(table.select()).fetchall()
 
+<<<<<<< HEAD
 
 #Esta funcieon nos permite obtener la información de un perro de la base de datos
 #!Una mejor manera de hacer esto para hacerlo más eficiente es buscar por id, pues pueden existir mas de dos perros con el mismo nombre
@@ -123,10 +127,42 @@ async def delete_user(table, id : int):
         table (Sqalchemy Table): table to delete data from
         id (int): id of the object to delete
     """
+=======
+async def get_one(table, name):
+    with engine.connect() as conn:
+        return  conn.execute(table.select().where(table.c.name == name)).fetchone()
+
+async def get_one_user(table, id):
+    with engine.connect() as conn:
+        return  conn.execute(table.select().where(table.c.id == id)).fetchone()
+
+async def get_dogs_adopted():
+    with engine.connect() as conn:
+        return  conn.execute('SELECT * FROM dogs WHERE is_adopted = 1').fetchall()
+
+async def create_object(table, data):
+    with engine.connect() as conn:
+        conn.execute(table.insert().values(data))
+
+async def update_dog(table, name, dict):
+    with engine.connect() as conn:
+        conn.execute(table.update().values(dict).where(table.c.name == name))
+
+async def update_user(table, id, dict):
+    with engine.connect() as conn:
+        conn.execute(table.update().values(dict).where(table.c.id == id))
+
+async def delete_dog(table, name):
+    with engine.connect() as conn:
+        conn.execute(table.delete().where(table.c.name == name))
+
+async def delete_user(table, id):
+>>>>>>> d95075ea65709eb096846bf4f0c382d9e5df37a7
     with engine.connect() as conn:
         conn.execute(table.delete().where(table.c.id == id))
 
 
+<<<<<<< HEAD
 
 #Esta función es extra con respecto a los lineamientos de la prueba, permite consultar los perros que han sido adoptados por el usuario con id user_id
 async def dogs_by_user(user_id : int):
@@ -139,10 +175,14 @@ async def dogs_by_user(user_id : int):
         [List[Dogs]]: list of dogs adopted by the user with the id provided
 
     """
+=======
+async def dogs_by_user(user_id):
+>>>>>>> d95075ea65709eb096846bf4f0c382d9e5df37a7
     with engine.connect() as conn:
         return  conn.execute('SELECT * FROM dogs WHERE user_id = {}'.format(user_id)).fetchall()
     
 
+<<<<<<< HEAD
 #Esta función  es la que consulta en la api que devuelve la url de una imágen de un perro
 async def get_picture():
     """get_picture function
@@ -169,3 +209,10 @@ async def put_file():
         files = {'file': b'Estoy aplicando a Guane'}
         response = await client.post("https://gttb.guane.dev/api/files", files=files)
         return response.text
+=======
+
+async def get_picture():
+    async with AsyncClient() as client:
+        response = await client.get("https://dog.ceo/api/breeds/image/random")
+        return response.json()["message"]
+>>>>>>> d95075ea65709eb096846bf4f0c382d9e5df37a7
